@@ -1,12 +1,32 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxBeat.h"
+#include "ofxFft.h"
+
+
 
 class ofApp : public ofBaseApp{
+
+	// Beat Tracking Object
+	ofxBeat beat;
+
 	private:
-		ofImage catPic;
+
+		//Images of cats
+		ofImage godCat1;
+		ofImage godCat2;
+		ofImage godCat4;
+
+		// Beat Counters for smoothing the images
+		int iterKick = 0;
+		int iterSnare = 0;
+		int iterNoBeat = 0;
+
 
 	public:
+
+
 		void setup();
 		void update();
 		void draw();
@@ -22,9 +42,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-
-
-
-
 		
+
+		void audioReceived(float*, int, int);
 };
